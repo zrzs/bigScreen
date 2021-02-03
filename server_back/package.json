@@ -1,0 +1,57 @@
+{
+  "name": "bigScreen",
+  "version": "1.0.0",
+  "description": "'上海交大大屏展示项目后端'",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "baidu-aip-sdk": "^2.4.6",
+    "cheerio": "^1.0.0-rc.3",
+    "cron": "^1.8.2",
+    "egg": "^2.15.1",
+    "egg-mysql": "^3.0.0",
+    "egg-scripts": "^2.11.0",
+    "iconv-lite": "^0.5.1",
+    "puppeteer": "^4.0.1",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "tesseract.js": "^2.0.2"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "chromedriver": "^80.0.1",
+    "egg-bin": "^4.14.1",
+    "egg-ci": "^1.11.0",
+    "egg-mock": "^3.21.0",
+    "eslint": "^5.13.0",
+    "eslint-config-egg": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-bigScreen",
+    "stop": "egg-scripts stop --title=egg-server-bigScreen",
+    "dev": "egg-bin dev --port 7001",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "10"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "most_wanted",
+  "license": "MIT"
+}

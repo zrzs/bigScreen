@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>上交大车型大数据可视化大屏</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/xlsx.core.min.js"></script>
+    <link rel="stylesheet" href="css/comon.css" />
+    <link rel="stylesheet" href="css/select.css" />
+  </head>
+  <script>
+    // 模型 SVG配置
+    // 鲸鱼
+    model_jingyu =
+      "path://M367.855,428.202c-3.674-1.385-7.452-1.966-11.146-1.794c0.659-2.922,0.844-5.85,0.58-8.719 c-0.937-10.407-7.663-19.864-18.063-23.834c-10.697-4.043-22.298-1.168-29.902,6.403c3.015,0.026,6.074,0.594,9.035,1.728 c13.626,5.151,20.465,20.379,15.32,34.004c-1.905,5.02-5.177,9.115-9.22,12.05c-6.951,4.992-16.19,6.536-24.777,3.271 c-13.625-5.137-20.471-20.371-15.32-34.004c0.673-1.768,1.523-3.423,2.526-4.992h-0.014c0,0,0,0,0,0.014 c4.386-6.853,8.145-14.279,11.146-22.187c23.294-61.505-7.689-130.278-69.215-153.579c-61.532-23.293-130.279,7.69-153.579,69.202 c-6.371,16.785-8.679,34.097-7.426,50.901c0.026,0.554,0.079,1.121,0.132,1.688c4.973,57.107,41.767,109.148,98.945,130.793 c58.162,22.008,121.303,6.529,162.839-34.465c7.103-6.893,17.826-9.444,27.679-5.719c11.858,4.491,18.565,16.6,16.719,28.643 c4.438-3.126,8.033-7.564,10.117-13.045C389.751,449.992,382.411,433.709,367.855,428.202z";
+
+    // 词云-汽车模型
+    model_ciyun_qiche =
+      "data:image/png;base64,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";
+
+    // 柱状图-汽车模型
+    model_zhuzhuang_qiche =
+      "path://M49.592,40.883c-0.053,0.354-0.139,0.697-0.268,0.963c-0.232,0.475-0.455,0.519-1.334,0.475 c-1.135-0.053-2.764,0-4.484,0.068c0,0.476,0.018,0.697,0.018,0.697c0.111,1.299,0.697,1.342,0.931,1.342h3.7 c0.326,0,0.628,0,0.861-0.154c0.301-0.196,0.43-0.772,0.543-1.78c0.017-0.146,0.025-0.336,0.033-0.56v-0.01 c0-0.068,0.008-0.154,0.008-0.25V41.58l0,0C49.6,41.348,49.6,41.09,49.592,40.883L49.592,40.883z M6.057,40.883 c0.053,0.354,0.137,0.697,0.268,0.963c0.23,0.475,0.455,0.519,1.334,0.475c1.137-0.053,2.762,0,4.484,0.068 c0,0.476-0.018,0.697-0.018,0.697c-0.111,1.299-0.697,1.342-0.93,1.342h-3.7c-0.328,0-0.602,0-0.861-0.154 c-0.309-0.18-0.43-0.772-0.541-1.78c-0.018-0.146-0.027-0.336-0.035-0.56v-0.01c0-0.068-0.008-0.154-0.008-0.25V41.58l0,0 C6.057,41.348,6.057,41.09,6.057,40.883L6.057,40.883z M49.867,32.766c0-2.642-0.344-5.224-0.482-5.507 c-0.104-0.207-0.766-0.749-2.271-1.773c-1.522-1.042-1.487-0.887-1.766-1.566c0.25-0.078,0.492-0.224,0.639-0.241 c0.326-0.034,0.345,0.274,1.023,0.274c0.68,0,2.152-0.18,2.453-0.48c0.301-0.303,0.396-0.405,0.396-0.672 c0-0.268-0.156-0.818-0.447-1.146c-0.293-0.327-1.541-0.49-2.273-0.585c-0.729-0.095-0.834,0-1.022,0.121 c-0.304,0.189-0.32,1.919-0.32,1.919l-0.713,0.018c-0.465-1.146-1.11-3.452-2.117-5.269c-1.103-1.979-2.256-2.599-2.737-2.754 c-0.474-0.146-0.904-0.249-4.131-0.576c-3.298-0.344-5.922-0.388-8.262-0.388c-2.342,0-4.967,0.052-8.264,0.388 c-3.229,0.336-3.66,0.43-4.133,0.576s-1.633,0.775-2.736,2.754c-1.006,1.816-1.652,4.123-2.117,5.269L9.87,23.109 c0,0-0.008-1.729-0.318-1.919c-0.189-0.121-0.293-0.225-1.023-0.121c-0.732,0.104-1.98,0.258-2.273,0.585 c-0.293,0.327-0.447,0.878-0.447,1.146c0,0.267,0.094,0.379,0.396,0.672c0.301,0.301,1.773,0.48,2.453,0.48 c0.68,0,0.697-0.309,1.023-0.274c0.146,0.018,0.396,0.163,0.637,0.241c-0.283,0.68-0.24,0.524-1.764,1.566 c-1.506,1.033-2.178,1.566-2.271,1.773c-0.139,0.283-0.482,2.865-0.482,5.508s0.189,5.02,0.189,5.86c0,0.354,0,0.976,0.076,1.565 c0.053,0.354,0.129,0.697,0.268,0.966c0.232,0.473,0.447,0.516,1.334,0.473c1.137-0.051,2.779,0,4.477,0.07 c1.135,0.043,2.297,0.086,3.33,0.11c2.582,0.051,1.826-0.379,2.928-0.36c1.102,0.016,5.447,0.196,9.424,0.196 c3.976,0,8.332-0.182,9.423-0.196c1.102-0.019,0.346,0.411,2.926,0.36c1.033-0.018,2.195-0.067,3.332-0.11 c1.695-0.062,3.348-0.121,4.477-0.07c0.886,0.043,1.103,0,1.332-0.473c0.132-0.269,0.218-0.611,0.269-0.966 c0.086-0.592,0.078-1.213,0.078-1.565C49.678,37.793,49.867,35.408,49.867,32.766L49.867,32.766z M13.219,19.735 c0.412-0.964,1.652-2.9,2.256-3.244c0.145-0.087,1.426-0.491,4.637-0.706c2.953-0.198,6.217-0.276,7.73-0.276 c1.513,0,4.777,0.078,7.729,0.276c3.201,0.215,4.502,0.611,4.639,0.706c0.775,0.533,1.842,2.28,2.256,3.244 c0.412,0.965,0.965,2.858,0.861,3.116c-0.104,0.258,0.104,0.388-1.291,0.275c-1.387-0.103-10.088-0.216-14.185-0.216 c-4.088,0-12.789,0.113-14.184,0.216c-1.395,0.104-1.188-0.018-1.291-0.275C12.254,22.593,12.805,20.708,13.219,19.735 L13.219,19.735z M16.385,30.511c-0.619,0.155-0.988,0.491-1.764,0.482c-0.775,0-2.867-0.353-3.314-0.371 c-0.447-0.017-0.842,0.302-1.076,0.362c-0.23,0.06-0.688-0.104-1.377-0.318c-0.688-0.216-1.092-0.155-1.316-1.094 c-0.232-0.93,0-2.264,0-2.264c1.488-0.068,2.928,0.069,5.621,0.826c2.693,0.758,4.191,2.213,4.191,2.213 S17.004,30.357,16.385,30.511L16.385,30.511z M36.629,37.293c-1.23,0.164-6.386,0.207-8.794,0.207c-2.412,0-7.566-0.051-8.799-0.207 c-1.256-0.164-2.891-1.67-1.764-2.865c1.523-1.627,1.24-1.576,4.701-2.023C24.967,32.018,27.239,32,27.834,32 c0.584,0,2.865,0.025,5.859,0.404c3.461,0.447,3.178,0.396,4.699,2.022C39.521,35.623,37.887,37.129,36.629,37.293L36.629,37.293z  M48.129,29.582c-0.232,0.93-0.629,0.878-1.318,1.093c-0.688,0.216-1.145,0.371-1.377,0.319c-0.231-0.053-0.627-0.371-1.074-0.361 c-0.448,0.018-2.539,0.37-3.313,0.37c-0.772,0-1.146-0.328-1.764-0.481c-0.621-0.154-0.966-0.154-0.966-0.154 s1.49-1.464,4.191-2.213c2.693-0.758,4.131-0.895,5.621-0.826C48.129,27.309,48.361,28.643,48.129,29.582L48.129,29.582z";
+  </script>
+  <script type="text/javascript" src="js/echarts.min.js"></script>
+  <script language="JavaScript" src="js/chart-config.js"></script>
+  <script language="JavaScript" src="js/chart.js"></script>
+  <script language="JavaScript" src="js/echarts-liquidfill.min.js"></script>
+  <script language="JavaScript" src="js/echarts-wordcloud.min.js"></script>
+  <script language="JavaScript" src="js/layer/layer.js"></script>
+  <script language="JavaScript" src="js/select.js"></script>
+  <body>
+    <div class="canvas">
+      <iframe
+        frameborder="0"
+        src="js/index.html"
+        style="width: 100%; height: 100%;"
+      ></iframe>
+    </div>
+    <div class="loading">
+      <iframe
+        frameborder="0"
+        src="loading.html"
+        style="width: 100%; height: 100%;"
+      ></iframe>
+    </div>
+    <header>
+      <div class="title">交大车型大数据可视化大屏</div>
+      <div class="tabs">
+        <div class="tab-item" id="screen-1">销量</div>
+        <div class="tab-item" id="screen-2">口碑</div>
+        <div class="tab-item" id="screen-3">召回投诉</div>
+      </div>
+      <div class="selectors">
+        <select name="" id="">
+          <option value="">11111</option>
+        </select>
+        <input type="month" />
+      </div>
+    </header>
+    <div class="content">
+      <div class="screen-lines">
+        <div class="screen"></div>
+        <div class="screen"></div>
+        <div class="screen"></div>
+        <div class="screen"></div>
+        <div class="screen"></div>
+        <div class="screen"></div>
+      </div>
+      <!-- 首屏销售数据 -->
+      <div class="screen-box screen-1">
+        <div class="col">
+          <div class="col-head">车型销量情况</div>
+          <div class="col-body">
+            <div class="chart-zhexian"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">品牌销量情况</div>
+          <div class="select-p-box" id='brand-sales' data-checks="">
+            <select class="hidden"></select>
+          </div>
+          <div class="col-body">
+            <div class="chart-qipao"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">售价区间销售情况</div>
+          <div class="col-body">
+            <div class="chart-duidie"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">车级销量情况</div>
+          <div class="col-body">
+            <div class="row">
+              <div class="chart-nandinggeer chart-nandinggeer-weixing"></div>
+              <div class="chart-nandinggeer chart-nandinggeer-xiaoxing"></div>
+              <div class="chart-nandinggeer chart-nandinggeer-jincou"></div>
+            </div>
+
+            <div class="row">
+              <div class="chart-nandinggeer chart-nandinggeer-zhongxing"></div>
+              <div
+                class="chart-nandinggeer chart-nandinggeer-zhongdaxing"
+              ></div>
+              <div class="chart-nandinggeer chart-nandinggeer-suv"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">汽车厂商销量</div>
+          <div class="select-p-box" id='firm-sales' data-checks="">
+            <select class="hidden"></select>
+          </div>
+          <div class="col-body">
+            <div class="chart-heliutu"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">售价级别排名占比</div>
+          <div class="col-body">
+            <div class="row">
+              <div class="chart-zuixing chart-zuixing-10"></div>
+              <div class="chart-zuixing chart-zuixing-15"></div>
+              <div class="chart-zuixing chart-zuixing-25"></div>
+            </div>
+            <div class="row">
+              <div class="chart-zuixing chart-zuixing-35"></div>
+              <div class="chart-zuixing chart-zuixing-50"></div>
+              <div class="chart-zuixing chart-zuixing-50plus"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 第二屏口碑数据 -->
+      <div class="screen-box screen-2 tab-item-hide">
+        <div class="col">
+          <div class="col-head">口碑评分排行榜</div>
+          <div class="col-body">
+            <div class="row"><div class="chart-xiangxing paihang"></div></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">评论词云</div>
+          <div class="col-body">
+            <div class="chart-word-cloud-comment"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">测评文章</div>
+          <div class="col-body">
+            <div class="chart-ceping"></div>
+          </div>
+        </div>
+        <div class="col" style="position: relative;">
+          <div class="col-head">口碑印象</div>
+          <div class="select-p-box" id="auction-select" data-checks="9810,0" data-model="City">
+              <select class="hidden"></select>
+          </div>
+          <div class="col-body">
+            <div class="row"><div class="chart-yinxiang-zhuzhuang"></div></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">2-12个月百车故障数分布</div>
+          <div class="col-body">
+            <div class="row">
+              <div class="chart-zuixing chart-212fault-10"></div>
+              <div class="chart-zuixing chart-212fault-15"></div>
+              <div class="chart-zuixing chart-212fault-25"></div>
+            </div>
+            <div class="row">
+              <div class="chart-zuixing chart-212fault-35"></div>
+              <div class="chart-zuixing chart-212fault-50"></div>
+              <div class="chart-zuixing chart-212fault-50plus"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">3-5年百车故障数分布</div>
+          <div class="col-body">
+            <div class="row">
+              <div class="chart-zuixing chart-35fault-10"></div>
+              <div class="chart-zuixing chart-35fault-15"></div>
+              <div class="chart-zuixing chart-35fault-25"></div>
+            </div>
+            <div class="row">
+              <div class="chart-zuixing chart-35fault-35"></div>
+              <div class="chart-zuixing chart-35fault-50"></div>
+              <div class="chart-zuixing chart-35fault-50plus"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 三屏 投诉召回 -->
+      <div class="screen-box screen-3 tab-item-hide">
+        <div class="col">
+          <div class="col-head">热门品牌投诉数量走势</div>
+          <div class="select-p-box" id='brand-compaint' data-checks="">
+            <select class="hidden"></select>
+          </div>
+          <div class="col-body">
+            <div class="chart-tousu-zhexian"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">品牌召回率</div>
+          <div class="col-body">
+            <div class="row">
+              <div class="chart-yibiao chart-yibiao-aodi"></div>
+              <div class="chart-yibiao chart-yibiao-bieke"></div>
+              <div class="chart-yibiao chart-yibiao-suteng"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="col-head">投诉问题占比情况</div>
+          <div class="col-body">
+            <div class="row">
+              <!-- 发动机 -->
+              <div class="chart-shuibo-fadongji"></div>
+              <!--  变速器-->
+              <div class="chart-shuibo-biansuqi"></div>
+              <!-- 离合器 -->
+              <div class="chart-shuibo-liheqi"></div>
+              <!-- 转向系统 -->
+              <div class="chart-shuibo-zhuanxiang"></div>
+            </div>
+            <div class="row">
+              <!-- 制动系统 -->
+              <div class="chart-shuibo-zhidong"></div>
+              <!-- 轮胎 -->
+              <div class="chart-shuibo-luntai"></div>
+              <!-- 前后桥及悬挂系统 -->
+              <div class="chart-shuibo-xuangua"></div>
+              <!-- 车身附件及电器 -->
+              <div class="chart-shuibo-cheshen"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head"><span id="compaint-brand-name">速腾</span>近一年投诉问题分布</div>
+          <div class="select-p-box" id='brand-compaint-position' data-checks="">
+            <select class="hidden"></select>
+          </div>
+          <div class="col-body">
+            <div class="chart-suteng">
+              <!-- 发动机 -->
+              <div class="chart-fadongji"></div>
+              <!--  变速器-->
+              <div class="chart-biansuqi"></div>
+              <!-- 离合器 -->
+              <div class="chart-liheqi"></div>
+              <!-- 转向系统 -->
+              <div class="chart-zhuanxiang"></div>
+              <!-- 制动系统 -->
+              <div class="chart-zhidong"></div>
+              <!-- 轮胎 -->
+              <div class="chart-luntai"></div>
+              <!-- 前后桥及悬挂系统 -->
+              <div class="chart-xuangua"></div>
+              <!-- 车身附件及电器 -->
+              <div class="chart-cheshen"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">热门车系召回缺陷词云</div>
+          <div class="col-body">
+            <div class="chart-word-cloud"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="col-head">召回新闻</div>
+          <div class="col-body">
+            <div class="chart-zhaohui"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dioalog"></div>
+  </body>
+</html>

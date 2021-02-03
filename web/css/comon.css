@@ -1,0 +1,574 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  transform: scale(0.666667);
+  transform-origin: left top 0px;
+  width: 5760px;
+  height: 2160px;
+  background: #000d4a url(../images/bg.jpg) center top;
+  background-size: cover;
+}
+
+.canvas {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+  z-index: 100000000;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1c;
+  text-align: center;
+}
+
+header {
+  width: 5760px;
+  height: 240px;
+  background: url(../images/head_bg.png) no-repeat center center;
+  background-size: 100% 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.tabs {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+}
+
+.tab-item-hide {
+  display: none;
+}
+
+.tab-item {
+  display: inline-block;
+  width: 180px;
+  height: 72px;
+  line-height: 72px;
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+  background-image: url(../images/icon-btn.png);
+  background-size: 100% 100%;
+  background-color: #19d3f26b;
+  transition: all 0.5s ease-out 0s;
+  border-radius: 15px;
+}
+
+.tab-item:hover {
+  background-color: #008b8b52;
+  color: #008b8b;
+}
+
+.tab-item-select {
+  background-color: #008b8b52;
+  color: #008b8b;
+}
+
+.title {
+  width: 5760px;
+  height: 240px;
+  text-align: center;
+  line-height: 240px;
+  color: #fff;
+  font-size: 75px;
+}
+
+.selectors {
+  position: absolute;
+  right: 100px;
+  top: 50px;
+  display: none;
+}
+
+.selectors input,
+.selectors select {
+  height: 80px;
+  font-size: 50px;
+}
+
+/* 正文内容正是开始 */
+.content {
+  width: 100%;
+  height: 1870px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  padding: 50px 0px;
+}
+
+.row {
+  display: flex;
+}
+
+.content .col:nth-child(n + 3) {
+  margin-top: 25px;
+}
+
+/* .content .col:nth-child(3),
+.content .col:nth-child(6) {
+  margin: 0 15px;
+} */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    /*background-color: #ddd;*/
+}
+
+
+/*滑块*/
+::-webkit-scrollbar-thumb {
+    background-color: #28a8e2;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #777;
+}
+
+
+/*滑道*/
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #00BCD4;
+    border-radius: 10px;
+}
+
+.col {
+  flex: 1;
+  border: 1px solid #02a6b527;
+  margin: 0 12px;
+  background-image: url("../images/box-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 1890px;
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.col-head {
+  height: 90px;
+  width: 100%;
+  background-image: url("../images/col-head-bg.png");
+  background-size: 100% 100%;
+  /* opacity: 0.6; */
+  color: #00eaff;
+  line-height: 90px;
+  text-align: center;
+  font-size: 45px;
+  padding-top: 20px;
+}
+
+.col-body {
+  margin: 20px 50px;
+}
+
+.select-p-box{
+  position: absolute;
+  right: 100px;
+  top:35px;
+}
+
+/* 图标开始 */
+
+.chart-zhexian {
+  height: 600px;
+  width: 100%;
+}
+
+.chart-tousu-zhexian {
+  height: 600px;
+  width: 100%;
+}
+
+.chart-nandinggeer {
+  margin-top: 60px;
+  height: 385px;
+  flex: 1;
+}
+
+.chart-heliutu {
+  margin-top: 30px;
+  height: 860px;
+}
+
+.chart-zuixing {
+  margin-top: 60px;
+  height: 385px;
+  flex: 1;
+}
+
+.chart-suteng {
+  height: 890px;
+  position: relative;
+  background-image: url('../images/car-model.png');
+  background-size: 100% 100%;
+}
+
+.chart-qipao {
+  height: 600px;
+}
+
+.chart-yinxiang-zhuzhuang {
+  height: 890px;
+  position: relative;
+  width: 100%;
+    flex: 1;
+    margin-left: 25px;
+  /* background-image: url('../images/car-model.png');
+  background-size: 100% 100%; */
+}
+
+.chart-shuibo {
+  margin-top: 40px;
+  height: 380px;
+  flex: 1;
+}
+
+.chart-word-cloud {
+  height: 890px;
+  flex: 1;
+}
+
+.chart-word-cloud-comment {
+  height: 600px;
+  flex: 1;
+}
+
+.chart-hunhe {
+  height: 600px;
+  flex: 1.2;
+}
+
+.chart-xiangxing {
+  width: 100%;
+  height: 600px;
+  flex: 1;
+  margin-left: 25px;
+}
+
+.chart-leida {
+  height: 380px;
+  margin-top: 0px;
+  flex: 1;
+}
+
+.chart-ceping {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.chart-yibiao {
+  height: 600px;
+  flex: 1;
+}
+
+.chart-yibiao:nth-child(2) {
+  margin: 0 30px;
+}
+
+.chart-duidie {
+  width: 100%;
+  height: 600px;
+}
+
+.chart-zhaohui {
+  height: 870px;
+  margin-top: 20px;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.chart-title {
+  text-align: center;
+  color: #fff;
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.chart-body {
+  display: flex;
+}
+
+.left-panel {
+  width: 400px;
+  height: 650px;
+  overflow: hidden;
+  position: relative;
+}
+
+.article-title:hover {
+  /* font-size: 19px; */
+  color: #2196f3;
+  transition: all 0.5s ease-out 0s;
+}
+
+.article-title {
+  font-size: 26px;
+  color: #02a6b5;
+  margin: 18px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.article-box{
+  flex: 1;
+}
+
+.title-box {
+  position: absolute;
+  width: 46%;
+  padding: 0 2%;
+  animation: articleTitle 20s infinite linear;
+}
+
+@keyframes articleTitle {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: -50%;
+  }
+}
+
+.right-iframe {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.right-iframe iframe {
+  width: 100%;
+  height: 650px;
+}
+
+.screen-lines {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  right: 0;
+}
+
+.screen {
+  width: 1920px;
+  border: 1px dashed #fff;
+  height: 1080px;
+  box-sizing: border-box;
+}
+
+.layui-layer {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+}
+
+.dioalog-defind {
+  background-image: url('../images/dioalog.png');
+  background-color: transparent !important;
+  background-size: 100%;
+}
+
+.layui-layer-content {
+  overflow: hidden !important;
+}
+
+.dioalog-defind iframe {
+  width: 1651.2px;
+  height: 780px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  border-radius: 50px;
+  border: none;
+}
+
+.chart-fadongji {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 175px;
+  top: -30px;
+}
+
+.chart-biansuqi {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 875px;
+  top: -20px;
+}
+
+.chart-liheqi {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 126px;
+  bottom: -50px;
+}
+
+.chart-zhuanxiang {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 544px;
+  top: -30px;
+}
+
+.chart-zhidong {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 380px;
+  bottom: -40px;
+}
+
+.chart-luntai {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  right: -64px;
+  bottom: 178px;
+}
+
+.chart-xuangua {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  right: -55px;
+  top: -30px;
+}
+
+.chart-cheshen {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: -60px;
+  bottom: 120px;
+}
+
+.chart-koubei-fadongji {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 175px;
+  top: -30px;
+}
+
+.chart-koubei-biansuqi {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 875px;
+  top: -20px;
+}
+
+.chart-koubei-liheqi {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 126px;
+  bottom: -50px;
+}
+
+.chart-koubei-zhuanxiang {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 544px;
+  top: -30px;
+}
+
+.chart-koubei-zhidong {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: 380px;
+  bottom: -40px;
+}
+
+.chart-koubei-luntai {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  right: -64px;
+  bottom: 178px;
+}
+
+.chart-koubei-xuangua {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  right: -55px;
+  top: -30px;
+}
+
+.chart-koubei-cheshen {
+  width: 300px;
+  height: 300px;
+  position: absolute !important;
+  left: -60px;
+  bottom: 120px;
+}
+
+.chart-shuibo-fadongji {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-biansuqi {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-liheqi {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-zhuanxiang {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-zhidong {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-luntai {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-xuangua {
+  flex: 1;
+  height: 300px;
+}
+
+.chart-shuibo-cheshen {
+  flex: 1;
+  height: 300px;
+}

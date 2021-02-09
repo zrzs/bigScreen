@@ -58,6 +58,26 @@ class BrandService extends Service {
       });
       return brandNameList;
     }
+  // 根据百车研究数据查询车型列表
+  async queryBrandByBaiche(type) {
+    let sql=`SELECT modelName FROM brand WHERE ${type} NOT LIKE '%暂无%' AND ${type} !='{"score":"","userCount":"","table":[]}'`;
+    let modelNameList = await this.app.mysql.query(sql);
+    modelNameList.map(b=>{
+        b.text=b.modelName;
+        b.val=b.modelName;
+        delete b.modelName;
+        return b;
+    });
+    return modelNameList;
+  }
+
+  async queryBaicheData(type,modelNames){
+    console.log(modelNames);
+    modelNames=JSON.parse(modelNames);
+    let sql=`SELECT ${type} as json,modelName FROM brand WHERE modelName in (${modelNames.join(',')})`;
+    let jsonList = await this.app.mysql.query(sql);
+    return jsonList;
+  }
 }
 
 module.exports = BrandService;

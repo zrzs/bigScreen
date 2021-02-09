@@ -92,6 +92,9 @@
         </div>
         <div class="col">
           <div class="col-head">车级销量情况</div>
+          <div class="select-p-box" id='car-level-sales' data-checks="">
+            <select class="hidden"></select>
+          </div>
           <div class="col-body">
             <div class="row">
               <div class="chart-nandinggeer chart-nandinggeer-weixing"></div>
@@ -119,6 +122,9 @@
         </div>
         <div class="col">
           <div class="col-head">售价级别排名占比</div>
+          <div class="select-p-box" id='sales-ranking' data-checks="">
+            <select class="hidden"></select>
+          </div>
           <div class="col-body">
             <div class="row">
               <div class="chart-zuixing chart-zuixing-10"></div>
@@ -137,6 +143,9 @@
       <div class="screen-box screen-2 tab-item-hide">
         <div class="col">
           <div class="col-head">口碑评分排行榜</div>
+          <div class="select-p-box" id='koubei-score-top' data-checks="">
+            <select class="hidden"></select>
+          </div>
           <div class="col-body">
             <div class="row"><div class="chart-xiangxing paihang"></div></div>
           </div>
@@ -164,6 +173,9 @@
         </div>
         <div class="col">
           <div class="col-head">2-12个月百车故障数分布</div>
+          <div class="select-p-box" id="2-12-baichefault" data-checks="" >
+            <select class="hidden"></select>
+          </div>
           <div class="col-body">
             <div class="row">
               <div class="chart-zuixing chart-212fault-10"></div>
@@ -179,6 +191,9 @@
         </div>
         <div class="col">
           <div class="col-head">3-5年百车故障数分布</div>
+          <div class="select-p-box" id="3-5-baichefault" data-checks="" >
+            <select class="hidden"></select>
+          </div>
           <div class="col-body">
             <div class="row">
               <div class="chart-zuixing chart-35fault-10"></div>
@@ -205,12 +220,21 @@
           </div>
         </div>
         <div class="col">
-          <div class="col-head">品牌召回率</div>
+          <div class="col-head" style="font-family: electronicFont;">品牌召回</div>
           <div class="col-body">
             <div class="row">
-              <div class="chart-yibiao chart-yibiao-aodi"></div>
-              <div class="chart-yibiao chart-yibiao-bieke"></div>
-              <div class="chart-yibiao chart-yibiao-suteng"></div>
+              <div class="chart-yibiao" id="chart-zhaohui-0">
+                <div class="zh-title"></div>
+                <div class="zh-number"></div>
+              </div>
+              <div class="chart-yibiao" id="chart-zhaohui-1">
+                <div class="zh-title"></div>
+                <div class="zh-number"></div>
+              </div>
+              <div class="chart-yibiao" id="chart-zhaohui-2">
+                <div class="zh-title"></div>
+                <div class="zh-number"></div>
+              </div>
             </div>
           </div>
         </div>

@@ -13,6 +13,11 @@ html {
   background-size: cover;
 }
 
+@font-face {
+  font-family: electronicFont;
+  src: url(../font/DS-DIGIT.TTF)
+}
+
 .canvas {
   position: fixed;
   width: 100%;
@@ -276,11 +281,24 @@ header {
 
 .chart-yibiao {
   height: 600px;
+  width: 33.3%;
   flex: 1;
+  text-align: center;
 }
 
-.chart-yibiao:nth-child(2) {
-  margin: 0 30px;
+.zh-title{
+  font-family: electronicFont;
+  font-size: 64px;
+  color: #fff;
+  margin-top: 120px;
+}
+
+.zh-number{
+  font-family: electronicFont;
+  font-size: 126px;
+  color: #0ff;
+  margin-top: 80px;
+  text-shadow: 0 0 5px #fff;
 }
 
 .chart-duidie {

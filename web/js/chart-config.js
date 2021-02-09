@@ -303,7 +303,7 @@ chartOption1_4_0={
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -339,7 +339,7 @@ chartOption1_4_1={
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -375,7 +375,7 @@ chartOption1_4_2={
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -411,7 +411,7 @@ chartOption1_4_3={
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -447,7 +447,7 @@ chartOption1_4_4={
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -483,7 +483,7 @@ chartOption1_4_5 = {
     formatter: "{a} <br/>{b} : {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -610,7 +610,7 @@ chartOption1_6_0 = {
     formatter: "{a} <br/>{b}: {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -629,8 +629,7 @@ chartOption1_6_0 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -657,6 +656,10 @@ chartOption1_6_1 = {
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b}: {c} ({d}%)",
+    textStyle: {
+      color: "#fff",
+      fontSize: 20,
+    },
   },
   legend: {
     orient: "vertical",
@@ -674,8 +677,7 @@ chartOption1_6_1 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -702,6 +704,10 @@ chartOption1_6_2 = {
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b}: {c} ({d}%)",
+    textStyle: {
+      color: "#fff",
+      fontSize: 20,
+    },
   },
   legend: {
     orient: "vertical",
@@ -719,8 +725,7 @@ chartOption1_6_2 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -749,7 +754,7 @@ chartOption1_6_3 = {
     formatter: "{a} <br/>{b}: {c} ({d}%)",
     textStyle: {
       color: "#fff",
-      fontSize: 18,
+      fontSize: 20,
     },
   },
   legend: {
@@ -768,8 +773,7 @@ chartOption1_6_3 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -796,6 +800,10 @@ chartOption1_6_4 = {
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b}: {c} ({d}%)",
+    textStyle: {
+      color: "#fff",
+      fontSize: 20,
+    },
   },
   legend: {
     orient: "vertical",
@@ -813,8 +821,7 @@ chartOption1_6_4 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -841,6 +848,10 @@ chartOption1_6_5 = {
   tooltip: {
     trigger: "item",
     formatter: "{a} <br/>{b}: {c} ({d}%)",
+    textStyle: {
+      color: "#fff",
+      fontSize: 20,
+    },
   },
   legend: {
     orient: "vertical",
@@ -858,8 +869,7 @@ chartOption1_6_5 = {
       radius: ["50%", "70%"],
       avoidLabelOverlap: false,
       label: {
-        show: true,
-        // position: "center",
+        show: false,
       },
       emphasis: {
         label: {
@@ -902,6 +912,7 @@ chartOption2_1 = {
     bottom: 5,
   },
   yAxis: {
+    min:4.5,
     axisLine: {
       show: false
     },
@@ -916,11 +927,13 @@ chartOption2_1 = {
   },
   xAxis: {
     data: [],
+    show:false,
     axisLabel: {
-        inside: true,
-        textStyle: {
-            color: '#fff'
-        }
+      // show:false,
+        // inside: true,
+        // textStyle: {
+        //     color: '#fff'
+        // }
     },
     axisTick: {
         show: false
@@ -1711,318 +1724,6 @@ chartOption3_1 = {
     }
   ],
   series: [],
-};
-
-// 3-2 品牌召回率
-// 奥迪Q3
-chartOption3_2_0 = {
-  tooltip: {
-    formatter: "{a} <br/>{c} {b}",
-    textStyle: {
-      fontSize: 18,
-      color: "#fff",
-    },
-  },
-  series: [
-    {
-      type: "gauge",
-      min: 0,
-      max: 100,
-      splitNumber: 10,
-      radius: "70%",
-      axisLine: {
-        // 坐标轴线
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: [
-            [
-              1,
-              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                {
-                  offset: 0.1,
-                  color: "#FFC600",
-                },
-                {
-                  offset: 0.6,
-                  color: "#30D27C",
-                },
-                {
-                  offset: 1,
-                  color: "#0B95FF",
-                },
-              ]),
-            ],
-          ],
-          width: 3,
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      axisLabel: {
-        // 坐标轴小标记
-        fontWeight: "bolder",
-        color: "#fff",
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 10,
-        fontSize: 24,
-      },
-      axisTick: {
-        // 坐标轴小标记
-        length: 22, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: "auto",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      splitLine: {
-        // 分隔线
-        length: 35, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle（详见lineStyle）控制线条样式
-          width: 3,
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      pointer: {
-        // 分隔线
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-      },
-      title: {
-        textStyle: {
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-          fontWeight: "bolder",
-          fontSize: 26,
-          fontStyle: "italic",
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      detail: {
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-        offsetCenter: [0, "50%"], // x, y，单位px
-        fontSize: 50,
-        color: "#00eaff",
-        fontWeight: "bolder",
-        formatter: function (value) {
-          return value + "%";
-        },
-      },
-      center: ["65%", "55%"],
-      data: [
-      ],
-    },
-  ],
-};
-// 别克GL8
-chartOption3_2_1 = {
-  tooltip: {
-    formatter: "{a} <br/>{c} {b}",
-  },
-  series: [
-    {
-      type: "gauge",
-      min: 0,
-      max: 100,
-      splitNumber: 10,
-      radius: "80%",
-      axisLine: {
-        // 坐标轴线
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: [
-            [
-              1,
-              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                {
-                  offset: 1,
-                  color: "#d558c8",
-                },
-                {
-                  offset: 0.6,
-                  color: "#330867",
-                },
-                {
-                  offset: 1,
-                  color: "#24d292",
-                },
-              ]),
-            ],
-          ],
-          width: 4,
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      axisLabel: {
-        // 坐标轴小标记
-        fontWeight: "bolder",
-        color: "#fff",
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 10,
-        fontSize: 24,
-      },
-      axisTick: {
-        // 坐标轴小标记
-        length: 22, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: "auto",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      splitLine: {
-        // 分隔线
-        length: 35, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle（详见lineStyle）控制线条样式
-          width: 3,
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      pointer: {
-        // 分隔线
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-      },
-      title: {
-        textStyle: {
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-          fontWeight: "bolder",
-          fontSize: 26,
-          fontStyle: "italic",
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      detail: {
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-        offsetCenter: [0, "50%"], // x, y，单位px
-        fontSize: 50,
-        color: "#00eaff",
-        fontWeight: "bolder",
-        formatter: function (value) {
-          return value + "%";
-        },
-      },
-      center: ["50%", "45%"],
-      data: [
-      ],
-    },
-  ],
-};
-// 速腾
-chartOption3_2_2 = {
-  tooltip: {
-    formatter: "{a} <br/>{c} {b}",
-  },
-  series: [
-    {
-      type: "gauge",
-      min: 0,
-      max: 100,
-      splitNumber: 10,
-      radius: "70%",
-      axisLine: {
-        // 坐标轴线
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: [
-            [
-              1,
-              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                {
-                  offset: 0.8,
-                  color: "#f9d423",
-                },
-                {
-                  offset: 0.6,
-                  color: "#fbc2eb",
-                },
-                {
-                  offset: 1,
-                  color: "#f0f",
-                },
-              ]),
-            ],
-          ],
-          width: 3,
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      axisLabel: {
-        // 坐标轴小标记
-        fontWeight: "bolder",
-        color: "#fff",
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 10,
-        fontSize: 24,
-      },
-      axisTick: {
-        // 坐标轴小标记
-        length: 22, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle控制线条样式
-          color: "auto",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      splitLine: {
-        // 分隔线
-        length: 35, // 属性length控制线长
-        lineStyle: {
-          // 属性lineStyle（详见lineStyle）控制线条样式
-          width: 3,
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      pointer: {
-        // 分隔线
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-      },
-      title: {
-        textStyle: {
-          // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-          fontWeight: "bolder",
-          fontSize: 24,
-          fontStyle: "italic",
-          color: "#fff",
-          shadowColor: "#fff", //默认透明
-          shadowBlur: 10,
-        },
-      },
-      detail: {
-        shadowColor: "#fff", //默认透明
-        shadowBlur: 5,
-        offsetCenter: [0, "50%"], // x, y，单位px
-        fontSize: 50,
-        color: "#00eaff",
-        fontWeight: "bolder",
-        formatter: function (value) {
-          return value + "%";
-        },
-      },
-      center: ["35%", "55%"],
-      data: [
-      ],
-    },
-  ],
 };
 
 // 3-3 投诉问题占比情况

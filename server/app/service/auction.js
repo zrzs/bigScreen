@@ -13,11 +13,11 @@ class AuctionService extends Service {
   }
 
   // 获取
-  async getAuctionList(username, password) {
+  async getAuctionList() {
     let auctionList = await this.app.mysql.query('SELECT * FROM brand WHERE modelPrice !=\'暂无\' AND titName NOT LIKE \'%进口%\' AND score !=0 AND (newBaicheFault !=\'{"score":"","userCount":"","table":[]}\' OR researchBaicheFault !=\'{"score":"","userCount":"","table":[]}\');');
     let $auctionList =[];
     auctionList.map(a=>{
-      $auctionList.push({text:a.modelName,j:a.mouthAppraise,val:a.id});
+      $auctionList.push({text:a.modelName,j:a.mouthAppraise,val:a.modelName});
     });
     return $auctionList;
   }

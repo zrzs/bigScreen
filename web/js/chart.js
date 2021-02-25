@@ -325,7 +325,7 @@
             var linearGradient =new echarts.graphic.LinearGradient(
               0, 0, 0, 1,[{offset: 0, color: '#83bff6'},{offset: 0.5, color: '#188df0'},{offset: 1, color: '#188df0'}]);
           var emphasisLinearGradient=new echarts.graphic.LinearGradient(
-            0, 0, 0, 1,[{offset: 0, color: '#2378f7'},{offset: 0.7, color: '#2378f7'},{offset: 1, color: '#83bff6'}]);
+            0, 0, 0, 1,[{offset: 0, color: 'rgba(135, 0, 157)'},{offset: 0.7, color: 'rgba(135, 0, 157)'},{offset: 1, color: 'rgba(135, 0, 157)'}]);
             if(val.vals.length>0){
               const cousre= parseInt(val.vals[0]);
               chartOption2_1.series[0].data.map(d=>{

@@ -1,5 +1,7 @@
-﻿$(function () {
-  $.ajax({url:'http://localhost:7001/getChartData',success:function(result){
+﻿// var baseUrl="http://localhost:8080/";
+var baseUrl="http://192.168.0.104:8080/";
+$(function () {
+  $.ajax({url:baseUrl+'/getChartData',success:function(result){
     $(".loading").fadeOut();
     // 1-1
     chartOption1_1.legend.data=result.data_1_1.map(r=>r.name);
@@ -30,7 +32,7 @@
           return alert('请选择');
         }
 
-        $.ajax({url:'http://localhost:7001/getBrandData?brandList='+JSON.stringify(option.texts),success:function(_result){
+        $.ajax({url:baseUrl+'/getBrandData?brandList='+JSON.stringify(option.texts),success:function(_result){
           chartOption1_2.legend.data=_result.map(r=>r.name);
           chartOption1_2.series=[];
           _result.map(r=>{
@@ -78,7 +80,7 @@
         if(option.texts&&option.texts.length===0){
           return alert('请选择');
         }
-        $.ajax({url:'http://localhost:7001/queryCarLevelMonthSales?month='+JSON.stringify(option.texts),success:function(_result){
+        $.ajax({url:baseUrl+'/queryCarLevelMonthSales?month='+JSON.stringify(option.texts),success:function(_result){
           chartOption1_2.legend.data=_result.map(r=>r.name);
           chartOption1_2.series=[];
           _result.map((r,i)=>{
@@ -109,7 +111,7 @@
           return alert('请选择');
         }
 
-        $.ajax({url:'http://localhost:7001/getFirmData?firmList='+JSON.stringify(option.texts),success:function(_result){
+        $.ajax({url:baseUrl+'/getFirmData?firmList='+JSON.stringify(option.texts),success:function(_result){
           chartOption1_5.legend.data=_result.map(r=>r.name);
           chartOption1_5.series[0].data=[];
           _result.map(r=>{
@@ -133,7 +135,7 @@
         if(option.texts&&option.texts.length===0){
           return alert('请选择');
         }
-        $.ajax({url:'http://localhost:7001/queryPriceRangeMonthSales?month='+JSON.stringify(option.texts),success:function(_result){
+        $.ajax({url:baseUrl+'/queryPriceRangeMonthSales?month='+JSON.stringify(option.texts),success:function(_result){
           chartOption1_2.legend.data=_result.map(r=>r.name);
           chartOption1_2.series=[];
           _result.map((r,i)=>{
@@ -238,7 +240,7 @@
               return alert('请选择');
             }
     
-            $.ajax({url:'http://localhost:7001/getCompaintData?brandList='+JSON.stringify(option.texts),success:function(_result){
+            $.ajax({url:baseUrl+'/getCompaintData?brandList='+JSON.stringify(option.texts),success:function(_result){
               chartOption3_1.series=[];
               _result.map(r=>{
                 let data=r.data.map(m=>m[1]);
@@ -269,7 +271,7 @@
               return alert('请选择');
             }
             let selectBrand=option.texts[0];
-            $.ajax({url:'http://localhost:7001/queryBrandPositionProblem?brandName='+selectBrand,success:function(_result){
+            $.ajax({url:baseUrl+'/queryBrandPositionProblem?brandName='+selectBrand,success:function(_result){
               let i=0;
               for(p in _result){
                 let option= window[`chartOption3_4_${i}`];
@@ -354,7 +356,7 @@
             }
             var modelNames=option.texts.map(t=>`'${t}'`);
     
-            $.ajax({url:'http://localhost:7001/queryBaicheData?type=newBaicheFault&modelNames='+JSON.stringify(modelNames),success:function(_result){
+            $.ajax({url:baseUrl+'/queryBaicheData?type=newBaicheFault&modelNames='+JSON.stringify(modelNames),success:function(_result){
               _result.map((r,i)=>{
                 let option=window[`chartOption2_5_${i}`];
                 option.title.text=r.modelName;
@@ -384,7 +386,7 @@
               return ;
             }
             var modelNames=option.texts.map(t=>`'${t}'`);
-            $.ajax({url:'http://localhost:7001/queryBaicheData?type=researchBaicheFault&modelNames='+JSON.stringify(modelNames),success:function(_result){
+            $.ajax({url:baseUrl+'/queryBaicheData?type=researchBaicheFault&modelNames='+JSON.stringify(modelNames),success:function(_result){
               _result.map((r,i)=>{
                 let option=window[`chartOption2_6_${i}`];
                 option.title.text=r.modelName;

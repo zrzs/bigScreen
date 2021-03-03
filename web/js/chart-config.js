@@ -1033,7 +1033,7 @@ chartOption2_4 = {
       inverse:true,
       hoverLink:false,
       range:[-1,1],
-      color: ['rgb(101,224,128)','rgb(251, 118, 123)']
+      color: ['rgb(45 109 59)','rgb(251, 118, 123)']
   },
   series: [
       {

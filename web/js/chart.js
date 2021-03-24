@@ -1,5 +1,5 @@
-﻿// var baseUrl="http://localhost:7001";
-var baseUrl="http://192.168.0.104:7001";
+﻿var baseUrl="http://localhost:7001";
+// var baseUrl="http://192.168.0.104:7001";
 $(function () {
   $.ajax({url:baseUrl+'/getChartData',success:function(result){
     $(".loading").fadeOut();

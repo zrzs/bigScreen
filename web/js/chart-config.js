@@ -84,7 +84,7 @@ var itemStyle1_2={
 
 chartOption1_2={
   title: {
-    text: "车型单日性能评比",
+    // text: "车型单日性能评比",
     left: "center",
     textStyle: {
       color: "#fff",
@@ -1033,7 +1033,7 @@ chartOption2_4 = {
       inverse:true,
       hoverLink:false,
       range:[-1,1],
-      color: ['rgb(45 109 59)','rgb(251, 118, 123)']
+      color: ['rgb(45,109,59)','rgb(251, 118, 123)']
   },
   series: [
       {

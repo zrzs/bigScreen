@@ -322,6 +322,10 @@ chartOption1_4_0={
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -358,6 +362,10 @@ chartOption1_4_1={
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -394,6 +402,10 @@ chartOption1_4_2={
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -430,6 +442,10 @@ chartOption1_4_3={
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -466,6 +482,10 @@ chartOption1_4_4={
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -502,6 +522,10 @@ chartOption1_4_5 = {
       radius: [30, 110],
       center: ["60%", "50%"],
       roseType: "area",
+      label: {
+        show: true,
+        fontSize:20
+      },
     },
   ],
 };
@@ -920,8 +944,9 @@ chartOption2_1 = {
       show: false
     },
     axisLabel: {
+      fontSize:20,
       textStyle: {
-          color: '#999'
+          color: '#fff'
       }
     }
   },
@@ -1970,6 +1995,7 @@ chartOption3_4_0 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2011,6 +2037,7 @@ chartOption3_4_1 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2052,6 +2079,7 @@ chartOption3_4_2 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2092,6 +2120,7 @@ chartOption3_4_3 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2132,6 +2161,7 @@ chartOption3_4_4 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2172,6 +2202,7 @@ chartOption3_4_5 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2212,6 +2243,7 @@ chartOption3_4_6 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,
@@ -2252,6 +2284,7 @@ chartOption3_4_7 = {
       selectedMode: "single",
       label: {
         position: "inner",
+        fontSize:18,
       },
       labelLine: {
         show: false,

@@ -16,5 +16,6 @@ module.exports = (app) => {
   router.get("/queryBrandPositionProblem", controller.home.queryBrandPositionProblem);
   router.get("/queryCarLevelMonthSales", controller.home.queryCarLevelMonthSales);
   router.get("/queryPriceRangeMonthSales", controller.home.queryPriceRangeMonthSales);
+  router.get("/queryBrandComplaintRate", controller.home.queryBrandComplaintRate);
   router.get("/queryBaicheData", controller.home.queryBaicheData);
 };

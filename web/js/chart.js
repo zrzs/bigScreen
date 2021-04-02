@@ -186,20 +186,8 @@ $(function () {
     // 3-1
 
     // 3-2
-    const zhaohuiList=result.data_3_2[0].data;
-    zhaohuiList.shift();
-    zhaohuiList.map((z,i)=>{
-      $(`#chart-zhaohui-${i} .zh-title`).text(z[0]);
-      $(`#chart-zhaohui-${i} .zh-number`).text(z[1]);
-    });
 
     // 3-3
-    result.data_3_3[0].data.shift();
-    result.data_3_3[0].data.map((r,i)=>{
-     let option= window[`chartOption3_3_${i}`];
-     option.series[0].name=r[0];
-     option.series[0].data=[r[1]];
-    });
     
     // 3-4 
 
@@ -224,7 +212,6 @@ $(function () {
       $("." + id).show();
       if (id === "screen-3") {
        var brandCompaintChart= chart_tousu_zhexian();
-        chart_shuibo();
         chart_wordcloud(wordcloud_zhaohui, "chart-word-cloud");
         show_article(zhaohui_articleList, ".chart-zhaohui");
        var chartProblemList= tousu_question();
@@ -277,13 +264,58 @@ $(function () {
                 let option= window[`chartOption3_4_${i}`];
                 option.title.text=`${p}问题`;
                 option.series[0].name=p;
-                option.series[0].data=_result[p].map(m=>{return {name:m[0],value:m[1]}});
+                option.series[0].data=_result[p].filter(m=>m[1]>0).map(m=>{
+                  return {name:m[0],value:m[1]}});
                 chartProblemList[p].setOption(option,{notMerge:true})
               }
               $("#compaint-brand-name").text(selectBrand);
             }})
           }
         });
+
+        $("#brand-zhaohui-number").data("init",JSON.stringify(result.data_3_2));
+        $("#brand-zhaohui-number").attr("data-checks",[result.data_3_2[0].text,result.data_3_2[1].text,result.data_3_2[2].text]);
+        $("#brand-zhaohui-number").mySelect({
+          showCancel:false,
+          showSearch:true,
+          multiple:true,
+          onChange:(option)=>{
+            if(option.texts&&option.texts.length===3){
+              option.texts.map((t,i)=>{
+                console.log(t,i);
+                $(`#chart-zhaohui-${i} .zh-title`).text(t);
+                let select=result.data_3_2.filter(m=>m.text===t);
+                $(`#chart-zhaohui-${i} .zh-number`).text(select[0].v);
+              });
+            }
+          }
+        });
+
+        $("#toushu-question-brand-rate").data("init",JSON.stringify(result.data_3_3));
+        $("#toushu-question-brand-rate").attr("data-checks",result.data_3_3[0].text);
+        $("#toushu-question-brand-rate").mySelect({
+          showCancel:false,
+          showSearch:true,
+          multiple:false,
+          onChange:(option)=>{
+            if(option.texts&&option.texts.length===1){
+              console.log(option);
+              option.texts.map((t,i)=>{
+                $.ajax({url:baseUrl+'/queryBrandComplaintRate?brandList='+JSON.stringify(option.texts),success:function(_result){
+                  _result.map((r,i)=>{
+                    let option= window[`chartOption3_3_${i}`];
+                    option.series[0].name=r.body;
+                    option.series[0].data=[r.rate];
+                  });
+                  chart_shuibo();
+                }})
+              });
+            }
+          }
+        });
+
+        // queryBrandComplaintRate
+
       } else if (id === "screen-2") {
         koubei_yinixiang();
         $("#auction-select").data("init",JSON.stringify(chart_2_4_init_data));
@@ -542,42 +574,42 @@ $(function () {
     var myChart_fadongji = echarts.init(
       document.getElementsByClassName("chart-shuibo-fadongji")[0]
     );
-    myChart_fadongji.setOption(chartOption3_3_0);
+    myChart_fadongji.setOption(chartOption3_3_0,{notMerge:true});
 
     var myChart_biansuqi = echarts.init(
       document.getElementsByClassName("chart-shuibo-biansuqi")[0]
     );
-    myChart_biansuqi.setOption(chartOption3_3_1);
+    myChart_biansuqi.setOption(chartOption3_3_1,{notMerge:true});
 
     var myChart_liheqi = echarts.init(
       document.getElementsByClassName("chart-shuibo-liheqi")[0]
     );
-    myChart_liheqi.setOption(chartOption3_3_2);
+    myChart_liheqi.setOption(chartOption3_3_2,{notMerge:true});
 
     var myChart_zhuanxiang = echarts.init(
       document.getElementsByClassName("chart-shuibo-zhuanxiang")[0]
     );
-    myChart_zhuanxiang.setOption(chartOption3_3_3);
+    myChart_zhuanxiang.setOption(chartOption3_3_3,{notMerge:true});
 
     var myChart_zhidong = echarts.init(
       document.getElementsByClassName("chart-shuibo-zhidong")[0]
     );
-    myChart_zhidong.setOption(chartOption3_3_4);
+    myChart_zhidong.setOption(chartOption3_3_4,{notMerge:true});
 
     var myChart_luntai = echarts.init(
       document.getElementsByClassName("chart-shuibo-luntai")[0]
     );
-    myChart_luntai.setOption(chartOption3_3_5);
+    myChart_luntai.setOption(chartOption3_3_5,{notMerge:true});
 
     var myChart_xuangua = echarts.init(
       document.getElementsByClassName("chart-shuibo-xuangua")[0]
     );
-    myChart_xuangua.setOption(chartOption3_3_6);
+    myChart_xuangua.setOption(chartOption3_3_6,{notMerge:true});
 
     var myChart_cheshen = echarts.init(
       document.getElementsByClassName("chart-shuibo-cheshen")[0]
     );
-    myChart_cheshen.setOption(chartOption3_3_7);
+    myChart_cheshen.setOption(chartOption3_3_7,{notMerge:true});
 
     window.addEventListener("resize", function () {
       myChart_fadongji.resize();
@@ -740,10 +772,10 @@ $(function () {
     myChart_fadongji.setOption(chartOption3_4_0);
 
     // 变速器
-    var myChart_biaosuqi = echarts.init(
+    var myChart_biansuqi = echarts.init(
       document.getElementsByClassName("chart-biansuqi")[0]
     );
-    myChart_biaosuqi.setOption(chartOption3_4_1);
+    myChart_biansuqi.setOption(chartOption3_4_1);
 
     // 离合器
     var myChart_liheqi = echarts.init(
@@ -792,7 +824,7 @@ $(function () {
       myChart_cheshen.resize();
     });
 
-    return {'发动机':myChart_fadongji,'变速器':myChart_biaosuqi,'离合器':myChart_liheqi,'转向系统':myChart_zhuanxiang,'制动系统':myChart_zhidong,'轮胎':myChart_luntai,'前后桥及悬挂系统':myChart_xuangua,'车身附件及电器':myChart_cheshen};
+    return {'发动机':myChart_fadongji,'变速器':myChart_biansuqi,'离合器':myChart_liheqi,'转向系统':myChart_zhuanxiang,'制动系统':myChart_zhidong,'轮胎':myChart_luntai,'前后桥及悬挂系统':myChart_xuangua,'车身附件及电器':myChart_cheshen};
   }
 
   // 车系口碑印象分布

@@ -244,6 +244,12 @@ class HomeController extends Controller {
       this.ctx.body=json;
     }
 
+    async queryBrandComplaintRate(){
+      const {brandList}=this.ctx.request.query;
+      const json= await this.ctx.service.complaint.queryBrandComplaintRate(brandList);
+      this.ctx.body=json;
+    }
+
     
   async getChartData() {
     const auctionList=await this.ctx.service.auction.getAuctionList();
@@ -251,6 +257,7 @@ class HomeController extends Controller {
     const top100ScoreBrand=await this.ctx.service.brand.queryTop100ScoreOfBrand();
     const firmNameList=await this.ctx.service.firm.queryFirmSalesGroup();
     const compaintList=await this.ctx.service.complaint.queryComplaintBrandGroup();
+    const complaintQuestionBrandList=await this.ctx.service.complaint.queryBrandComplaintQuestion();
     const brandPositinProblemList=await this.ctx.service.brand.queryBrandPositonProblemGroup();
     const carLevelMonthList=await this.ctx.service.sale.queryCarLevelGroupMonth();
     const priceRankingMonthList=await this.ctx.service.sale.queryPriceRangeGroupMonth();
@@ -273,8 +280,10 @@ class HomeController extends Controller {
     let data_2_6 = researchBaicheFaultNameList;
 
     let data_3_1 = compaintList;
-    let data_3_2 = xlsx.parse(path.join("xlsx", "3-2.xlsx"));
-    let data_3_3 = xlsx.parse(path.join("xlsx", "3-3.xlsx"));
+    let _3_2_list= xlsx.parse(path.join("xlsx", "3-2.xlsx"))[0].data;
+    _3_2_list.shift();
+    let data_3_2 = _3_2_list.map(m=> {return {text:m[0],val:m[0],v:m[1]}});;
+    let data_3_3 = complaintQuestionBrandList;
     let data_3_4 = brandPositinProblemList;
     let data_3_5 = xlsx.parse(path.join("xlsx", "3-5.xlsx"));
     let data_3_6 = xlsx.parse(path.join("xlsx", "3-6.xlsx"));

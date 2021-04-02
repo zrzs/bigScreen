@@ -26,6 +26,28 @@ class ComplaintService extends Service {
     });
     return brandNameList;
   }
+
+  async queryBrandComplaintQuestion(){
+    let brandNameList = await this.app.mysql.query("SELECT brandName FROM brandComplaintQuestion GROUP BY brandName");
+    brandNameList.map(b=>{
+        b.text=b.brandName;
+        b.val=b.brandName;
+        delete b.brandName;
+        return b;
+    });
+    return brandNameList;
+  }
+
+    // 通过品牌名 查询车身投诉问题占比
+  async queryBrandComplaintRate(brandList) {
+      let brandComplaintList = await this.app.mysql.select('brandComplaintQuestion',{
+          where:{
+              brandName:JSON.parse(brandList)
+          },
+          columns:['body','rate']
+      });
+      return brandComplaintList;
+    }
 }
 
 module.exports = ComplaintService;
